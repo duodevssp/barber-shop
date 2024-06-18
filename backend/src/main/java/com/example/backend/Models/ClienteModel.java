@@ -13,7 +13,7 @@ public class ClienteModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idCliente;
-    private String emailCLiente;
+    private String emailCliente;
     private String nomeCliente;
 
     public UUID getIdCliente() {
@@ -24,12 +24,12 @@ public class ClienteModel implements Serializable {
         this.idCliente = idCliente;
     }
 
-    public String getEmailCLiente() {
-        return emailCLiente;
+    public String getEmailCliente() {
+        return emailCliente;
     }
 
-    public void setEmailCLiente(String emailCLiente) {
-        this.emailCLiente = emailCLiente;
+    public void setEmailCliente(String emailCliente) {
+        this.emailCliente = emailCliente;
     }
 
     public String getNomeCliente() {

@@ -78,7 +78,7 @@ public class AgendamentoModel implements Serializable {
         this.idBarbeiro = idBarbeiro;
     }
 
-    private UUID idBarbeiro;
+    public UUID idBarbeiro;
 
 
 }
