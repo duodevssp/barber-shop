@@ -1,11 +1,14 @@
 package com.example.backend.RecordDto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.UUID;
 
-public record AgendamentoRecordDto(@NotBlank LocalDate data, @NotBlank LocalTime hora, @NotBlank String status, @NotBlank String tipoServico, @NotBlank
-                                   UUID idCliente) {
+public record AgendamentoRecordDto( @NotNull UUID idCliente,
+                                    @NotNull UUID idBarbeiro,
+                                    @NotNull Date dataAgendamento) {
 }

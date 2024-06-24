@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -16,12 +17,18 @@ public class AgendamentoModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idAgendamento;
 
-    private LocalDate data;
-    private LocalTime hora;
-    private String status;
-    private String tipoServico;
-    private UUID idCliente;
+    @ManyToOne
+    @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
+    private ClienteModel cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "idBarbeiro", referencedColumnName = "idBarbeiro")
+    private BarbeiroModel barbeiro;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataAgendamento;
+
+    // Getters and Setters
     public UUID getIdAgendamento() {
         return idAgendamento;
     }
@@ -30,55 +37,27 @@ public class AgendamentoModel implements Serializable {
         this.idAgendamento = idAgendamento;
     }
 
-    public LocalDate getData() {
-        return data;
+    public ClienteModel getCliente() {
+        return cliente;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setCliente(ClienteModel cliente) {
+        this.cliente = cliente;
     }
 
-    public LocalTime getHora() {
-        return hora;
+    public BarbeiroModel getBarbeiro() {
+        return barbeiro;
     }
 
-    public void setHora(LocalTime hora) {
-        this.hora = hora;
+    public void setBarbeiro(BarbeiroModel barbeiro) {
+        this.barbeiro = barbeiro;
     }
 
-    public String getStatus() {
-        return status;
+    public Date getDataAgendamento() {
+        return dataAgendamento;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setDataAgendamento(Date dataAgendamento) {
+        this.dataAgendamento = dataAgendamento;
     }
-
-    public String getTipoServico() {
-        return tipoServico;
-    }
-
-    public void setTipoServico(String tipoServico) {
-        this.tipoServico = tipoServico;
-    }
-
-    public UUID getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(UUID idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public UUID getIdBarbeiro() {
-        return idBarbeiro;
-    }
-
-    public void setIdBarbeiro(UUID idBarbeiro) {
-        this.idBarbeiro = idBarbeiro;
-    }
-
-    public UUID idBarbeiro;
-
-
 }
